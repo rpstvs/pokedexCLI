@@ -28,41 +28,41 @@ func startRepl() {
 		if exists {
 			err := command.callback()
 
-			if err!= nil {
+			if err != nil {
 				fmt.Println(err)
 			}
-		}else {
+		} else {
 			fmt.Println("Unknown Command")
 			continue
 		}
-	
+
 	}
 
 }
 
 func cleanInput(text string) []string {
-	output:= strings.ToLower(text)
-	words:=strings.Fields(output)
+	output := strings.ToLower(text)
+	words := strings.Fields(output)
 	return words
 }
 
 type cliCommand struct {
-	name string
+	name        string
 	description string
-	callback func() error
+	callback    func() error
 }
 
 func getCommands() map[string]cliCommand {
 	return map[string]cliCommand{
-		"help":{
-			name: "help",
+		"help": {
+			name:        "help",
 			description: "Display a help message",
-			callback: commandHelp,
+			callback:    commandHelp,
 		},
 		"exit": {
-			name:"exit",
+			name:        "exit",
 			description: "Exit the program",
-			callback: commandExit,
-		}
+			callback:    commandExit,
+		},
 	}
 }
