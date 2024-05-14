@@ -34,7 +34,7 @@ func startRepl(cfg *config) {
 		command, exists := getCommands()[commandName]
 
 		if exists {
-			err := command.callback()
+			err := command.callback(cfg)
 
 			if err != nil {
 				fmt.Println(err)
@@ -57,7 +57,7 @@ func cleanInput(text string) []string {
 type cliCommand struct {
 	name        string
 	description string
-	callback    func() error
+	callback    func(cfg *config) error
 }
 
 func getCommands() map[string]cliCommand {
