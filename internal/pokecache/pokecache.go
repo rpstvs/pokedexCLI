@@ -24,3 +24,23 @@ func NewCache(interval time.Duration) Cache {
 	go c.reapLoop(interval)
 	return c
 }
+
+func (c *Cache) Add(key string, vale []byte) {
+	c.mux.Lock()
+	defer c.mux.Unlock()
+
+	c.cache[key] = CacheEntry{
+		CreatedAt: time.Now().UTC(),
+		val:       vale,
+	}
+
+}
+
+func (c *Cache) Get(key string) ([]byte, bool) {
+	c.mux.Lock()
+	defer c.mux.Unlock()
+
+	val, ok := c.cache[key]
+
+	return val.val, ok
+}
