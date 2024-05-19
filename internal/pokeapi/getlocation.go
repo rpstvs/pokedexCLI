@@ -22,6 +22,10 @@ func (c *Client) GetLocation(locationName string) (Location, error) {
 
 	req, err := http.NewRequest("GET", url, nil)
 
+	if err != nil {
+		return Location{}, err
+	}
+
 	resp, err := c.httpClient.Do(req)
 
 	if err != nil {
