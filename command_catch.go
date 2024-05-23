@@ -27,7 +27,7 @@ func commandCatch(cfg *config, args ...string) error {
 		cfg.Pokedex[pokemon.Name] = pokemon
 
 	} else {
-		fmt.Printf("%s got away!! Try again", pokemon.Name)
+		fmt.Printf("%s got away!! Try again\n", pokemon.Name)
 	}
 
 	return nil
