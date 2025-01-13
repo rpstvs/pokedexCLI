@@ -2,7 +2,7 @@ package main
 
 import "testing"
 
-func TesTCleanInput(t *testing.T) {
+func TestCleanInput(t *testing.T) {
 
 	cases := []struct {
 		input    string
@@ -22,7 +22,11 @@ func TesTCleanInput(t *testing.T) {
 		},
 		{
 			input:    " Hell0 World ",
-			expected: []string{"hello", "world"},
+			expected: []string{"hell0", "world"},
+		},
+		{
+			input:    "Charmander Bulbasaur PIKACHU",
+			expected: []string{"charmander", "bulbasaur", "pikachu"},
 		},
 	}
 
